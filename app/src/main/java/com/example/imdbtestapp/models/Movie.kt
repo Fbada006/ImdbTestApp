@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Movie(
-    val id: Int,
+    val id: Long,
     val original_language: String?,
     val original_title: String?,
     val overview: String?,
