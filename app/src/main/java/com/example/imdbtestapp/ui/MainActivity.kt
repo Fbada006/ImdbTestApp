@@ -1,4 +1,4 @@
-package com.example.imdbtestapp
+package com.example.imdbtestapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.imdbtestapp.ui.theme.ImdbTestAppTheme
+import com.example.imdbtestapp.ui.theme.TmdbTestAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ImdbTestAppTheme {
+            TmdbTestAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -39,7 +39,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    ImdbTestAppTheme {
+    TmdbTestAppTheme {
         Greeting("Android")
     }
 }

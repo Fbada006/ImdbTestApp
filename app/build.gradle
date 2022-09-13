@@ -24,7 +24,7 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
-        buildConfigField "String", "imdbApiKey", localProperties['imdbApiKey']
+        buildConfigField "String", "tmdbApiKey", localProperties['tmdbApiKey']
     }
 
     buildTypes {
@@ -94,6 +94,9 @@ dependencies {
     implementation "androidx.room:room-ktx:$rootProject.room_version"
     implementation "androidx.room:room-paging:$rootProject.room_version"
     kapt "androidx.room:room-compiler:$rootProject.room_version"
+
+    //Coil
+    implementation "io.coil-kt:coil-compose:$rootProject.coil_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

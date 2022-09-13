@@ -1,7 +1,7 @@
 package com.example.imdbtestapp.di
 
-import com.example.imdbtestapp.data.ImdbMovieDatabase
-import com.example.imdbtestapp.network.ImdbService
+import com.example.imdbtestapp.data.TmdbMovieDatabase
+import com.example.imdbtestapp.network.TmdbService
 import com.example.imdbtestapp.repo.MovieRepository
 import com.example.imdbtestapp.repo.MovieRepositoryImpl
 import dagger.Module
@@ -16,6 +16,6 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideRepository(service: ImdbService, database: ImdbMovieDatabase): MovieRepository =
+    fun provideRepository(service: TmdbService, database: TmdbMovieDatabase): MovieRepository =
         MovieRepositoryImpl(service, database)
 }

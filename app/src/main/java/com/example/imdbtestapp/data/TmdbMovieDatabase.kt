@@ -10,7 +10,7 @@ import com.example.imdbtestapp.data.models.DbRemoteKeys
     version = 1,
     exportSchema = false
 )
-abstract class ImdbMovieDatabase : RoomDatabase() {
+abstract class TmdbMovieDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
     abstract fun remoteKeysDao(): RemoteKeysDao

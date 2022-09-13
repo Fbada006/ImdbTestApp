@@ -8,24 +8,23 @@ import androidx.room.withTransaction
 import com.example.imdbtestapp.data.models.DbMovie
 import com.example.imdbtestapp.data.models.DbRemoteKeys
 import com.example.imdbtestapp.mappers.toDbMovie
-import com.example.imdbtestapp.models.Movie
-import com.example.imdbtestapp.network.ImdbService
-import com.example.imdbtestapp.utils.IMDB_STARTING_PAGE_INDEX
+import com.example.imdbtestapp.network.TmdbService
+import com.example.imdbtestapp.utils.TMDB_STARTING_PAGE_INDEX
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class ImdbRemoteMediator @Inject constructor(
-    private val service: ImdbService,
-    private val imdbMovieDatabase: ImdbMovieDatabase
+class TmdbRemoteMediator @Inject constructor(
+    private val service: TmdbService,
+    private val tmdbMovieDatabase: TmdbMovieDatabase
 ) : RemoteMediator<Int, DbMovie>() {
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, DbMovie>): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                remoteKeys?.nextKey?.minus(1) ?: IMDB_STARTING_PAGE_INDEX
+                remoteKeys?.nextKey?.minus(1) ?: TMDB_STARTING_PAGE_INDEX
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getRemoteKeyForFirstItem(state)
@@ -45,21 +44,21 @@ class ImdbRemoteMediator @Inject constructor(
             val movies = movieResult.movieList
             val endOfPaginationReached = movies.isEmpty()
 
-            imdbMovieDatabase.withTransaction {
+            tmdbMovieDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     // clear all tables in the database because we are getting fresh data
-                    imdbMovieDatabase.remoteKeysDao().clearRemoteKeys()
-                    imdbMovieDatabase.movieDao().clearMovies()
+                    tmdbMovieDatabase.remoteKeysDao().clearRemoteKeys()
+                    tmdbMovieDatabase.movieDao().clearMovies()
                 }
 
-                val prevKey = if (page == IMDB_STARTING_PAGE_INDEX) null else page - 1
+                val prevKey = if (page == TMDB_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = movies.map {
                     DbRemoteKeys(movieId = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
 
-                imdbMovieDatabase.remoteKeysDao().insertAll(keys)
-                imdbMovieDatabase.movieDao().insertAll(movies.map { it.toDbMovie() })
+                tmdbMovieDatabase.remoteKeysDao().insertAll(keys)
+                tmdbMovieDatabase.movieDao().insertAll(movies.map { it.toDbMovie() })
             }
 
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
@@ -76,7 +75,7 @@ class ImdbRemoteMediator @Inject constructor(
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { movie ->
                 // Get the remote keys of the last item retrieved
-                imdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movie.id)
+                tmdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movie.id)
             }
     }
 
@@ -88,7 +87,7 @@ class ImdbRemoteMediator @Inject constructor(
         }?.data?.firstOrNull()
             ?.let { movie ->
                 // Get the remote keys of the first items retrieved
-                imdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movie.id)
+                tmdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movie.id)
             }
     }
 
@@ -99,7 +98,7 @@ class ImdbRemoteMediator @Inject constructor(
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { movieId ->
-                imdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movieId)
+                tmdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movieId)
             }
         }
     }
