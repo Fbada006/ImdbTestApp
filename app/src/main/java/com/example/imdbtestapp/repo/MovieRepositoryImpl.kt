@@ -1,15 +1,15 @@
 package com.example.imdbtestapp.repo
 
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.paging.*
 import com.example.imdbtestapp.data.ImdbMovieDatabase
 import com.example.imdbtestapp.data.ImdbRemoteMediator
+import com.example.imdbtestapp.data.models.DbMovie
+import com.example.imdbtestapp.mappers.toApiMovie
 import com.example.imdbtestapp.models.Movie
 import com.example.imdbtestapp.network.ImdbService
 import com.example.imdbtestapp.utils.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
@@ -18,7 +18,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val imdbMovieDatabase: ImdbMovieDatabase
 ) : MovieRepository {
 
-    override fun getMovies(): Flow<PagingData<Movie>> {
+    override fun getMovies(): Flow<PagingData<DbMovie>> {
         val pagingSourceFactory = { imdbMovieDatabase.movieDao().getAllMovies() }
 
         return Pager(

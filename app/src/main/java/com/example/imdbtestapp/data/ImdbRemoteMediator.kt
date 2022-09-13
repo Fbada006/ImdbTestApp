@@ -5,6 +5,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.example.imdbtestapp.data.models.DbMovie
 import com.example.imdbtestapp.data.models.DbRemoteKeys
 import com.example.imdbtestapp.mappers.toDbMovie
 import com.example.imdbtestapp.models.Movie
@@ -18,9 +19,9 @@ import javax.inject.Inject
 class ImdbRemoteMediator @Inject constructor(
     private val service: ImdbService,
     private val imdbMovieDatabase: ImdbMovieDatabase
-) : RemoteMediator<Int, Movie>() {
+) : RemoteMediator<Int, DbMovie>() {
 
-    override suspend fun load(loadType: LoadType, state: PagingState<Int, Movie>): MediatorResult {
+    override suspend fun load(loadType: LoadType, state: PagingState<Int, DbMovie>): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
@@ -69,7 +70,7 @@ class ImdbRemoteMediator @Inject constructor(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Movie>): DbRemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, DbMovie>): DbRemoteKeys? {
         // Get the last page that was retrieved, that contained items.
         // From that last page, get the last item
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
@@ -79,7 +80,7 @@ class ImdbRemoteMediator @Inject constructor(
             }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Movie>): DbRemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, DbMovie>): DbRemoteKeys? {
         // Get the first page that was retrieved that contained items.
         // From that first page, get the first item
         return state.pages.firstOrNull { pagingSource ->
@@ -92,7 +93,7 @@ class ImdbRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
-        state: PagingState<Int, Movie>
+        state: PagingState<Int, DbMovie>
     ): DbRemoteKeys? {
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
