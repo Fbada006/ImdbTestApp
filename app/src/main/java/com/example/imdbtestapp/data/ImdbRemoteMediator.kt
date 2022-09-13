@@ -6,6 +6,7 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.imdbtestapp.data.models.DbRemoteKeys
+import com.example.imdbtestapp.mappers.toDbMovie
 import com.example.imdbtestapp.models.Movie
 import com.example.imdbtestapp.network.ImdbService
 import com.example.imdbtestapp.utils.IMDB_STARTING_PAGE_INDEX
@@ -57,7 +58,7 @@ class ImdbRemoteMediator @Inject constructor(
                 }
 
                 imdbMovieDatabase.remoteKeysDao().insertAll(keys)
-                imdbMovieDatabase.movieDao().insertAll(movies)
+                imdbMovieDatabase.movieDao().insertAll(movies.map { it.toDbMovie() })
             }
 
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
