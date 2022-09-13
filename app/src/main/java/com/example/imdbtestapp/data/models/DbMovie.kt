@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "movies")
 data class DbMovie(
     @PrimaryKey
-    val id: Int,
-    val original_language: String?,
-    val original_title: String?,
+    val id: Long,
+    val originalLanguage: String?,
+    val originalTitle: String?,
     val overview: String?,
-    val poster_path: String?,
-    val release_date: String?,
+    val posterPath: String?,
+    val releaseDate: String?,
     val title: String?
 )
