@@ -10,7 +10,7 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(localPropertiesFile))
 
 android {
-    namespace 'com.example.imdbtestapp'
+    namespace 'com.example.tmdbtestapp'
     compileSdk 33
 
     defaultConfig {
