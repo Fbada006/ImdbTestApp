@@ -68,7 +68,8 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
     implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
-    debugImplementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
+    implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha16"
 
     // Retrofit
     api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
@@ -91,6 +92,7 @@ dependencies {
     //Room
     implementation "androidx.room:room-runtime:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
+    implementation "androidx.room:room-paging:$rootProject.room_version"
     kapt "androidx.room:room-compiler:$rootProject.room_version"
 
     testImplementation 'junit:junit:4.13.2'
