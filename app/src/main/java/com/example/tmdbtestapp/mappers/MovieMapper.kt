@@ -11,7 +11,8 @@ fun DbMovie.toApiMovie() =
         overview = this.overview,
         posterPath = this.posterPath,
         releaseDate = this.releaseDate,
-        title = this.title
+        title = this.title,
+        backdropPath = this.backdropPath
     )
 
 fun Movie.toDbMovie() =
@@ -22,5 +23,6 @@ fun Movie.toDbMovie() =
         overview = this.overview,
         posterPath = this.posterPath,
         releaseDate = this.releaseDate,
-        title = this.title
+        title = this.title,
+        backdropPath = this.backdropPath
     )
