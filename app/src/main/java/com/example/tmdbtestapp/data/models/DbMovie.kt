@@ -13,5 +13,5 @@ data class DbMovie(
     val posterPath: String?,
     val releaseDate: String?,
     val title: String?,
-    val backdropPath:String
+    val backdropPath:String?
 )

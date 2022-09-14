@@ -39,7 +39,7 @@ class TmdbRemoteMediator @Inject constructor(
         }
 
         return try {
-            val movieResult = service.getMovies()
+            val movieResult = service.getMovies(page = page)
 
             val movies = movieResult.movieList
             val endOfPaginationReached = movies.isEmpty()
