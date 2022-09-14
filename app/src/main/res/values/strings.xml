@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TmdbTestApp</string>
+    <string name="cd_error_image">Error image holder</string>
 </resources>
