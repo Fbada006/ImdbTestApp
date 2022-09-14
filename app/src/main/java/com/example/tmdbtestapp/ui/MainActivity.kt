@@ -7,8 +7,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.compose.rememberNavController
 import com.example.tmdbtestapp.R
-import com.example.tmdbtestapp.ui.main.MainScreen
+import com.example.tmdbtestapp.navigation.TmdbNavHost
 import com.example.tmdbtestapp.ui.theme.TmdbTestAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,6 +19,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TmdbTestAppTheme {
+                val navController = rememberNavController()
+
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     topBar = {
@@ -26,7 +29,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) { paddingValues ->
-                    MainScreen(paddingValues = paddingValues)
+                    TmdbNavHost(navController = navController, paddingValues = paddingValues)
                 }
             }
         }
