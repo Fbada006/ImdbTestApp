@@ -11,6 +11,7 @@ buildscript {
         moshiConverterVersion = '2.8.1'
         timberVersion = '5.0.1'
         room_version = "2.4.3"
+        coil_version = "2.2.1"
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"

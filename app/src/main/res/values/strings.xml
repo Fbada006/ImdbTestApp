@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">ImdbTestApp</string>
+    <string name="app_name">TmdbTestApp</string>
+    <string name="title_movie_details">Movie Details</string>
+    <string name="cd_error_image">Error image holder</string>
+    <string name="cd_back_button">Back button</string>
+    <string name="release_date">Released : %s</string>
+    <string name="try_again">"Try again"</string>
 </resources>
