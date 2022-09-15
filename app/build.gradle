@@ -107,8 +107,8 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
     testImplementation "androidx.arch.core:core-testing:$rootProject.core_testing_version"
     testImplementation "io.mockk:mockk:$rootProject.mockk_version"
-    testImplementation "androidx.test:runner:1.4.0"
-    testImplementation 'org.robolectric:robolectric:4.8.1'
+    testImplementation "androidx.test:runner:$rootProject.androidx_test_runner_version"
+    testImplementation "org.robolectric:robolectric:$rootProject.roboelectric_version"
     testImplementation "androidx.test.ext:junit-ktx:$rootProject.junit_ext_version"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
