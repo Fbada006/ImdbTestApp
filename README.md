@@ -71,6 +71,14 @@ Dribble to get a good design. There is also another challenge with the fact that
 are all problems that were surmounted by searching for information online and learning. Due to time constraints, I was also unable to write any
 UI tests but some unit tests have been included.
 
+Testing has been done but not extensively due to time constraints and issues with `AndroidJunit4` where an exception with the
+message 
+```
+java.lang.RuntimeException: Delegate runner androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner for AndroidJUnit4 could not be found
+```
+was thrown. I did not have the time to figure it out soon enough.
+
+
 ```
 MIT License
 
