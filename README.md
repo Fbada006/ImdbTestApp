@@ -64,6 +64,12 @@ This app takes use of the following libraries:
 The app also uses GitHub actions to build the app and runs whenever a new pull request or merge to the `master` branch happens.
 Note the creation of the fake `local.properties` file as one of the steps to avoid an error. Find the configuration in the `.github` folder in the `build.yml` file
 
+#### Challenges
+
+One of the biggest issues with the app is that I did not work with a UI designer, meaning the UI could use a lot of improvements. With more time, I would have used something like
+Dribble to get a good design. There is also another challenge with the fact that `Jetpack Compose Navigation` has certain limitations making it difficult to debug in case of an error but these
+are all problems that were surmounted by searching for information online and learning.
+
 ```
 MIT License
 
