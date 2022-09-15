@@ -66,6 +66,8 @@ class TmdbRemoteMediator @Inject constructor(
             MediatorResult.Error(exception)
         } catch (exception: HttpException) {
             MediatorResult.Error(exception)
+        } catch (exception: Exception) {
+            MediatorResult.Error(exception)
         }
     }
 
