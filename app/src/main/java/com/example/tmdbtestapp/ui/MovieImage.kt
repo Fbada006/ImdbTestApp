@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
+import coil.size.Size
 import com.example.tmdbtestapp.R
 
 @Composable
@@ -37,7 +38,7 @@ fun MovieImage(
             )
         },
         contentDescription = null,
-        contentScale = ContentScale.Fit,
+        contentScale = ContentScale.FillWidth,
         modifier = modifier
     )
 }

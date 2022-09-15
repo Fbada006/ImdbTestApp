@@ -1,6 +1,9 @@
 package com.example.tmdbtestapp.repo
 
-import androidx.paging.*
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.tmdbtestapp.data.TmdbMovieDatabase
 import com.example.tmdbtestapp.data.TmdbRemoteMediator
 import com.example.tmdbtestapp.data.models.DbMovie
@@ -27,4 +30,6 @@ class MovieRepositoryImpl @Inject constructor(
             pagingSourceFactory = pagingSourceFactory
         ).flow
     }
+
+    override suspend fun getMovieById(movieId: Long?) = tmdbMovieDatabase.movieDao().getMovieById(movieId)
 }

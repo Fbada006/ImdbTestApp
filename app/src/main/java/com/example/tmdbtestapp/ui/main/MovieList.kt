@@ -1,5 +1,6 @@
 package com.example.tmdbtestapp.ui.main
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,7 +21,11 @@ import com.example.tmdbtestapp.ui.MovieItem
 import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun MovieList(movies: Flow<PagingData<Movie>>, modifier: Modifier) {
+fun MovieList(
+    movies: Flow<PagingData<Movie>>,
+    modifier: Modifier,
+    onMovieClick: (movie: Movie) -> Unit
+) {
 
     val lazyMovieItems = movies.collectAsLazyPagingItems()
 
@@ -37,6 +42,7 @@ fun MovieList(movies: Flow<PagingData<Movie>>, modifier: Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp)
+                    .clickable { onMovieClick(movie) }
             )
         }
 

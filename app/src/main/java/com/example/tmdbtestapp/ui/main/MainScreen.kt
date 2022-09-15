@@ -6,22 +6,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.tmdbtestapp.models.Movie
+import com.example.tmdbtestapp.navigation.MainScreen
 import com.example.tmdbtestapp.ui.TmdbViewmodel
 
 @Composable
 fun MainScreen(
-    viewmodel: TmdbViewmodel = hiltViewModel(),
-    paddingValues: PaddingValues
+    tmdbViewmodel: TmdbViewmodel,
+    paddingValues: PaddingValues,
+    onMovieClick: (movie: Movie) -> Unit
 ) {
+    tmdbViewmodel.setPopState(MainScreen.route)
     Column(
         modifier = Modifier
             .padding(bottom = paddingValues.calculateBottomPadding())
     )
     {
         MovieList(
-            movies = viewmodel.movies,
-            modifier = Modifier.fillMaxSize()
+            movies = tmdbViewmodel.movies,
+            modifier = Modifier.fillMaxSize(),
+            onMovieClick = onMovieClick
         )
     }
 }
