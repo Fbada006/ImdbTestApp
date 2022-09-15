@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.tmdbtestapp.testKeyList
 import com.example.tmdbtestapp.testMovieList
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,6 +22,7 @@ import java.io.IOException
 class TmdbMovieDatabaseTest {
 
     private lateinit var movieDao: MovieDao
+    private lateinit var keysDao: RemoteKeysDao
     private lateinit var db: TmdbMovieDatabase
 
     @Before
@@ -30,6 +32,7 @@ class TmdbMovieDatabaseTest {
             context, TmdbMovieDatabase::class.java
         ).build()
         movieDao = db.movieDao()
+        keysDao = db.remoteKeysDao()
     }
 
     @Test
@@ -57,6 +60,26 @@ class TmdbMovieDatabaseTest {
         movieDao.clearMovies()
         val dbMovie = movieDao.getMovieById(21)
         assertThat(dbMovie).isNull()
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun `saving keys to database returns valid remote key`() = runTest {
+        keysDao.insertAll(testKeyList)
+
+        val key = keysDao.remoteKeyMovieId(15)
+        assertThat(key).isNotNull()
+        assertThat(key?.movieId).isEqualTo(15)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun `saving keys to database and clearing returns null key`() = runTest {
+        keysDao.insertAll(testKeyList)
+        keysDao.clearRemoteKeys()
+
+        val key = keysDao.remoteKeyMovieId(15)
+        assertThat(key).isNull()
     }
 
     @After
