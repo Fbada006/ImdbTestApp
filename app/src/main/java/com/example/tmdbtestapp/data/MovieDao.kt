@@ -16,10 +16,10 @@ interface MovieDao {
     fun getAllMovies(): PagingSource<Int, DbMovie>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(repos: List<DbMovie>)
+    suspend fun insertAll(movies: List<DbMovie>)
 
     @Query("SELECT * FROM movies WHERE id = :movieId")
-    suspend fun getMovieById(movieId: Long?): DbMovie
+    suspend fun getMovieById(movieId: Long?): DbMovie?
 
     @Query("DELETE FROM movies")
     suspend fun clearMovies()

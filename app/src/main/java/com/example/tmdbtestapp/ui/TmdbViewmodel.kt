@@ -33,7 +33,7 @@ class TmdbViewmodel @Inject constructor(
         }
 
     fun getMovieById(movieId: Long?) = viewModelScope.launch {
-        mutableMovieState.value = repository.getMovieById(movieId).toApiMovie()
+        mutableMovieState.value = repository.getMovieById(movieId)?.toApiMovie()
     }
 
     fun setPopState(route: String) {

@@ -8,5 +8,5 @@ interface MovieRepository {
 
     fun getMovies(): Flow<PagingData<DbMovie>>
 
-    suspend fun getMovieById(movieId: Long?): DbMovie
+    suspend fun getMovieById(movieId: Long?): DbMovie?
 }
