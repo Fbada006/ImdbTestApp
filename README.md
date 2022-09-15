@@ -68,7 +68,8 @@ Note the creation of the fake `local.properties` file as one of the steps to avo
 
 One of the biggest issues with the app is that I did not work with a UI designer, meaning the UI could use a lot of improvements. With more time, I would have used something like
 Dribble to get a good design. There is also another challenge with the fact that `Jetpack Compose Navigation` has certain limitations making it difficult to debug in case of an error but these
-are all problems that were surmounted by searching for information online and learning.
+are all problems that were surmounted by searching for information online and learning. Due to time constraints, I was also unable to write any
+UI tests but some unit tests have been included.
 
 ```
 MIT License
