@@ -74,7 +74,7 @@ class TmdbRemoteMediator @Inject constructor(
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, DbMovie>): DbRemoteKeys? {
         // Get the last page that was retrieved, that contained items.
         // From that last page, get the last item
-        return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
+        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { movie ->
                 // Get the remote keys of the last item retrieved
                 tmdbMovieDatabase.remoteKeysDao().remoteKeyMovieId(movie.id)
