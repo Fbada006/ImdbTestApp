@@ -70,6 +70,8 @@ Note the creation of the fake `local.properties` file as one of the steps to avo
 One of the biggest issues with the app is that I did not work with a UI designer, meaning the UI could use a lot of improvements. With more time, I would have used something like
 Dribble to get a good design. There is also another challenge with the fact that `Jetpack Compose Navigation` has certain limitations making it difficult to debug in case of an error but these
 are all problems that were surmounted by searching for information online and learning. 
+There is also an issue where the `LazyColumn` does not return to its original position once the user clicks into and out of the details screen. I know that I can
+solve this using the `ListState` but I have been unable to do so as of yet.
 
 
 ```
