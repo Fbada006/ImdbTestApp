@@ -47,7 +47,14 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 ) { paddingValues ->
-                    TmdbNavHost(navController = navController, paddingValues = paddingValues, tmdbViewmodel = tmdbViewmodel)
+                    TmdbNavHost(
+                        navController = navController,
+                        paddingValues = paddingValues,
+                        detailsMovie = tmdbViewmodel.movieState,
+                        setPopState = { tmdbViewmodel.setPopState(it) },
+                        movies = tmdbViewmodel.movies,
+                        getMovieById = { tmdbViewmodel.getMovieById(it) }
+                    )
                 }
             }
         }

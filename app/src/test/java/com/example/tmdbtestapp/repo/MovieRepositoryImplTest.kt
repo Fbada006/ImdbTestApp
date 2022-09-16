@@ -3,7 +3,7 @@ package com.example.tmdbtestapp.repo
 import com.example.tmdbtestapp.data.MovieDao
 import com.example.tmdbtestapp.data.TmdbMovieDatabase
 import com.example.tmdbtestapp.network.TmdbService
-import com.example.tmdbtestapp.validDbMovie
+import com.example.tmdbtestapp.validEnDbMovie
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.every
@@ -29,7 +29,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `getting movie from db by id return valid db movie`() = runTest {
-        coEvery { movieDao.getMovieById(any()) } returns validDbMovie
+        coEvery { movieDao.getMovieById(any()) } returns validEnDbMovie
 
         val movie = repo.getMovieById(1)
 

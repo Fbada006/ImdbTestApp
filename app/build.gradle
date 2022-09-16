@@ -59,8 +59,8 @@ android {
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:$rootProject.core_ktx_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecyle_runtime_ktx_version"
+    implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecyleRuntimeKtxVersion"
 
     // Compose
     implementation "androidx.compose.runtime:runtime:$rootProject.composeVersion"
@@ -70,10 +70,10 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$rootProject.composeVersion"
     implementation "androidx.activity:activity-compose:$rootProject.activityComposeVersion"
     implementation "androidx.navigation:navigation-compose:$rootProject.navigationComposeVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$rootProject.viewmodel_compose_version"
-    implementation "androidx.hilt:hilt-navigation-compose:$rootProject.navigation_compose_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$rootProject.viewmodelComposeVersion"
+    implementation "androidx.hilt:hilt-navigation-compose:$rootProject.hiltNavigationComposeVersion"
     implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
-    implementation "androidx.paging:paging-compose:$rootProject.paging_compose_version"
+    implementation "androidx.paging:paging-compose:$rootProject.pagingComposeCersion"
 
     // Retrofit
     api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
@@ -94,22 +94,25 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
 
     //Room
-    implementation "androidx.room:room-runtime:$rootProject.room_version"
-    implementation "androidx.room:room-ktx:$rootProject.room_version"
-    implementation "androidx.room:room-paging:$rootProject.room_version"
-    kapt "androidx.room:room-compiler:$rootProject.room_version"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    implementation "androidx.room:room-paging:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
     //Coil
-    implementation "io.coil-kt:coil-compose:$rootProject.coil_version"
+    implementation "io.coil-kt:coil-compose:$rootProject.coilVersion"
 
-    testImplementation "junit:junit:$rootProject.junit_version"
-    testImplementation "com.google.truth:truth:$rootProject.truth_version"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-    testImplementation "androidx.arch.core:core-testing:$rootProject.core_testing_version"
-    testImplementation "io.mockk:mockk:$rootProject.mockk_version"
-    debugImplementation "androidx.test.ext:junit-ktx:$rootProject.junit_ext_version"
+    testImplementation "app.cash.turbine:turbine:$rootProject.turbineVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "com.google.truth:truth:$rootProject.truthVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    testImplementation "io.mockk:mockk:$rootProject.mockkVersion"
+    testImplementation "androidx.test:runner:$rootProject.androidxTestRunnerVersion"
+    testImplementation "org.robolectric:robolectric:$rootProject.roboelectricVersion"
+    testImplementation "androidx.test.ext:junit-ktx:$rootProject.junitExtVersion"
 
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$composeVersion"
     debugImplementation "androidx.compose.ui:ui-tooling:$composeVersion"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$composeVersion"

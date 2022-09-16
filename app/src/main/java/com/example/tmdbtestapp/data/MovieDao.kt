@@ -6,8 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.tmdbtestapp.data.models.DbMovie
-import com.example.tmdbtestapp.data.models.DbRemoteKeys
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
