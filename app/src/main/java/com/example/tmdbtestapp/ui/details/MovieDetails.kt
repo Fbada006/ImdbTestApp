@@ -1,6 +1,8 @@
 package com.example.tmdbtestapp.ui.details
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -29,7 +31,7 @@ fun MovieDetails(
     setPopState(DetailScreen.route)
     getMovieById(movieId)
     val movie by movieState.collectAsState()
-
+    val state = rememberScrollState()
     Card(
         modifier = modifier,
         elevation = 4.dp
@@ -40,6 +42,7 @@ fun MovieDetails(
                 modifier = Modifier
                     .fillMaxWidth()
                     .defaultMinSize(minHeight = 220.dp)
+                    .verticalScroll(state)
             )
 
             Box(modifier = Modifier.padding(4.dp)) {
