@@ -56,6 +56,7 @@ This app takes use of the following libraries:
 - [Timber](https://github.com/JakeWharton/timber) - A logger with a small, extensible API which provides utility on top
   of Android's normal Log class.
 - [Truth](https://truth.dev/) - A library for performing assertions in tests
+- [Turbine](https://github.com/cashapp/turbine) - Turbine is a small testing library for `kotlinx.coroutines Flow`
 
 ## Extras
 
@@ -68,15 +69,7 @@ Note the creation of the fake `local.properties` file as one of the steps to avo
 
 One of the biggest issues with the app is that I did not work with a UI designer, meaning the UI could use a lot of improvements. With more time, I would have used something like
 Dribble to get a good design. There is also another challenge with the fact that `Jetpack Compose Navigation` has certain limitations making it difficult to debug in case of an error but these
-are all problems that were surmounted by searching for information online and learning. Due to time constraints, I was also unable to write any
-UI tests but some unit tests have been included.
-
-Testing has been done but not extensively due to time constraints and issues with `AndroidJunit4` where an exception with the
-message 
-```
-java.lang.RuntimeException: Delegate runner androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner for AndroidJUnit4 could not be found
-```
-was thrown. I did not have the time to figure it out soon enough.
+are all problems that were surmounted by searching for information online and learning. 
 
 
 ```

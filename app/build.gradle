@@ -102,6 +102,7 @@ dependencies {
     //Coil
     implementation "io.coil-kt:coil-compose:$rootProject.coil_version"
 
+    testImplementation "app.cash.turbine:turbine:$rootProject.turbine_version"
     testImplementation "junit:junit:$rootProject.junit_version"
     testImplementation "com.google.truth:truth:$rootProject.truth_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
