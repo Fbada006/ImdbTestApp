@@ -6,24 +6,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.paging.PagingData
 import com.example.tmdbtestapp.models.Movie
 import com.example.tmdbtestapp.navigation.MainScreen
-import com.example.tmdbtestapp.ui.TmdbViewmodel
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun MainScreen(
-    tmdbViewmodel: TmdbViewmodel,
+    movies: Flow<PagingData<Movie>>,
+    setPopState: (route: String) -> Unit,
     paddingValues: PaddingValues,
     onMovieClick: (movie: Movie) -> Unit
 ) {
-    tmdbViewmodel.setPopState(MainScreen.route)
+    setPopState(MainScreen.route)
     Column(
         modifier = Modifier
             .padding(bottom = paddingValues.calculateBottomPadding())
     )
     {
         MovieList(
-            movies = tmdbViewmodel.movies,
+            movies = movies,
             modifier = Modifier.fillMaxSize(),
             onMovieClick = onMovieClick
         )

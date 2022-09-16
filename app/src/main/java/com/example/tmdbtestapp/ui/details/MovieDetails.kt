@@ -11,21 +11,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.tmdbtestapp.R
+import com.example.tmdbtestapp.models.Movie
 import com.example.tmdbtestapp.navigation.DetailScreen
 import com.example.tmdbtestapp.ui.MovieImage
 import com.example.tmdbtestapp.ui.MovieTitle
-import com.example.tmdbtestapp.ui.TmdbViewmodel
 import com.example.tmdbtestapp.utils.TMDB_ORIGINAL_IMAGE_BASE_URL
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun MovieDetails(
     movieId: Long?,
     modifier: Modifier = Modifier,
-    tmdbViewmodel: TmdbViewmodel
+    movieState: StateFlow<Movie?>,
+    setPopState: (route: String) -> Unit,
+    getMovieById: (movieId: Long?) -> Unit
 ) {
-    tmdbViewmodel.setPopState(DetailScreen.route)
-    tmdbViewmodel.getMovieById(movieId)
-    val movie by tmdbViewmodel.movieState.collectAsState()
+    setPopState(DetailScreen.route)
+    getMovieById(movieId)
+    val movie by movieState.collectAsState()
 
     Card(
         modifier = modifier,
